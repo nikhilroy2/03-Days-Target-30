@@ -1,0 +1,174 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    background: #00a;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+body::before, body::after{
+    
+    content: '';
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    border: 100vh solid;
+    z-index: -2;
+}
+body::before{
+    border-color: transparent transparent transparent blue;
+}
+body::after{
+    border-color: transparent transparent  transparent blue ;
+    transform: rotate(45deg);
+}
+.box{
+   
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    line-height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 500px) {
+    .box{
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+    }
+}
+:root{
+    --lg-bg: linear-gradient(to right, rgba(0, 0, 55,.4) 50%, rgba(0, 0, 255,.4) 50%);
+}
+.box__right,
+.box__left,
+.box__top,
+.box__bottom,
+.box__center{
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+    line-height: inherit;
+    transition: transform 1s ease;
+}
+.box__right::before,
+.box__left::before,
+.box__top::before,
+.box__bottom::before,
+.box__center::before{
+    position: absolute;
+    content: '';
+    width: 70.71%;
+    height: 70.71%;
+    transform: rotate(45deg);
+}
+.box__right:hover,
+.box__left:hover,
+.box__top:hover,
+.box__bottom:hover,
+.box__center:hover{
+    transform: translateX(0);
+    z-index: 1;
+}
+.box__right:hover::before,
+.box__left:hover::before,
+.box__top:hover::before,
+.box__bottom:hover::before,
+.box__center:hover::before{
+    width: 100%;
+    height: 100%;
+    transform: none;
+}
+.box__right{
+    background: var(--lg-bg) , blue url('https://images.unsplash.com/photo-1575314027842-c33656c1f3dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60');
+    transform: translateX(100%);
+}
+.box__right::before{
+    right: 100%;
+    bottom: 0px;
+    transform-origin: 100% 100%;
+}
+.box__right:hover ~ .box__center{
+    transform: translateX(-100%);
+    opacity: 0;
+}
+.box__left{
+    background: var(--lg-bg) , green url('https://images.unsplash.com/photo-1575352622748-415e8d764eb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60') center/cover;
+    transform: translateX(-100%);
+}
+.box__left::before{
+    left: 100%;
+    transform-origin: 0 0;
+}
+.box__left:hover ~ .box__center{
+    transform: translateX(100%);
+    opacity: 0;
+}
+.box__top{
+    background: var(--lg-bg) , red url('https://images.unsplash.com/photo-1575302136415-907c5c4e6777?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60') center/cover;
+    transform: translateY(-100%);
+}
+.box__top::before{
+    top: 100%;
+    right: 0px;
+    transform-origin: 100% 0px;
+}
+.box__top:hover ~ .box__center{
+    transform: translateY(100%);
+    opacity: 0;
+}
+.box__bottom{
+    background: var(--lg-bg) , yellow url('https://images.unsplash.com/photo-1575318634026-38fb9e8157d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60') center/ cover;
+    transform: translateY(100%);
+}
+.box__bottom::before{
+    bottom: 100%;
+    left: 0px;
+    transform-origin: 0 100%;
+
+}
+.box__bottom:hover ~ .box__center {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+.box__center{
+    background: var(--lg-bg) , orange url('https://images.unsplash.com/photo-1575318634028-6a0cfcb60c59?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60') center/cover;
+    z-index: -1;
+    opacity: 1;
+    transition: 2.5s;
+}
+[class*=box__] a{
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+/*...........contact info style...........*/
+
+.nl_contact{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 220px;
+    padding: 15px;
+    border: solid;
+    color: white;
+    background: rgba(0, 0, 255,.6);
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0px 0px 50px 2px black;
+    user-select: none;
+}
+.nl_contact ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: flex;
+}
